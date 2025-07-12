@@ -146,7 +146,7 @@ def main():
     if args.raw:
         json.dump(metadata, sys.stdout, indent=4)
     else:
-        builds = metadata['flashstationBuild']
+        builds = metadata.get('flashstationBuild', [])
         builds.sort(key=lambda b: int(b['buildId']))
 
         by_product = {}
