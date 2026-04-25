@@ -48,4 +48,4 @@ uv run pixel-factory-images.py -d "${codename}" -g
 
 ## License
 
-pixel-factory-images is licensed under GPLv3. Please see [`LICENSE`](./LICENSE) for the full license text.
+pixel-factory-images is licensed under GPL-3.0-only. Please see [`LICENSE`](./LICENSE) for the full license text.
