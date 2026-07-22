@@ -22,10 +22,16 @@ To show the latest stable factory image:
 uv run pixel-factory-images.py -d "${codename}" | jq "last(.${codename}[] | select(.latest_in_category))"
 ```
 
-To show the latest beta/canary factory image:
+To show the latest factory image in every beta/canary channel:
 
 ```bash
-uv run pixel-factory-images.py -d "${codename}" | jq "last(.${codename}_beta[] | select(.latest_in_category))"
+uv run pixel-factory-images.py -d "${codename}" | jq ".${codename}_beta[] | select(.latest_in_category)"
+```
+
+To show the latest factory image for the canary channel:
+
+```bash
+uv run pixel-factory-images.py -d "${codename}" | jq "last(.${codename}_beta[] | select((.version | contains(\"Canary\")) and .latest_in_category))"
 ```
 
 To get just the URL of the latest stable factory image:
