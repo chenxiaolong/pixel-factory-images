@@ -116,11 +116,19 @@ def fetch_metadata(options: LookupOptions) -> dict[str, Any]:
     return r.json()
 
 
+def non_empty_string(s: str) -> str:
+    if not s:
+        raise argparse.ArgumentTypeError(f'must not be empty: {s!r}')
+
+    return s
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-d', '--device',
         required=True,
+        type=non_empty_string,
         help='Device codename',
     )
     parser.add_argument(
